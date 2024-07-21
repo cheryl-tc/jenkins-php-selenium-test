@@ -6,9 +6,9 @@ pipeline {
                 stage('Deploy') {
                     agent any
                     steps {
-                        sh './jenkins/scripts/deploy.sh'
+                        powershell '.\\jenkins\\scripts\\deploy.ps1'
                         input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                        sh './jenkins/scripts/kill.sh'
+                        powershell '.\\jenkins\\scripts\\kill.ps1'
                     }
                 }
                 stage('Headless Browser Test') {
